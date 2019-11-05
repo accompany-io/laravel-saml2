@@ -63,11 +63,16 @@ class Saml2Controller extends Controller
 
         $redirectUrl = $user->getIntendedUrl();
 
-        if ($redirectUrl !== null) {
+        if ($redirectUrl !== null && !$this->wouldCauseInfiniteLoop($auth, $redirectUrl)) {
             return redirect($redirectUrl);
         } else {
             return redirect(config('saml2.loginRoute'));
         }
+    }
+
+    private function wouldCauseInfiniteLoop(Auth $auth, $redirectUrl) {
+        $loginUrl = route('saml.login', ['uuid' => $auth->getTenant()->uuid]);
+        return $redirectUrl === $loginUrl;
     }
 
     /**
