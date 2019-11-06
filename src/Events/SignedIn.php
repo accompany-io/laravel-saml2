@@ -12,19 +12,8 @@ use Slides\Saml2\Auth;
  */
 class SignedIn
 {
-    /**
-     * The signed-up user.
-     *
-     * @var Saml2User
-     */
-    public $user;
-
-    /**
-     * The authentication handler.
-     *
-     * @var Auth
-     */
-    public $auth;
+    protected $user;
+    protected $auth;
 
     /**
      * LoggedIn constructor.
@@ -36,5 +25,25 @@ class SignedIn
     {
         $this->user = $user;
         $this->auth = $auth;
+    }
+
+    /**
+     * The authentication handler.
+     *
+     * @return Auth
+     */
+    public function getAuth()
+    {
+        return $this->auth;
+    }
+
+    /**
+     * The signed-up user.
+     *
+     * @return Saml2User
+     */
+    public function getSaml2User()
+    {
+        return $this->user;
     }
 }
