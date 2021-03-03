@@ -12,7 +12,7 @@ use Slides\Saml2\Repositories\TenantRepository;
  */
 class CreateTenant extends \Illuminate\Console\Command
 {
-    use RendersTenants;
+    use RendersTenants, ValidatesInput;
 
     /**
      * The name and signature of the console command.
@@ -24,6 +24,8 @@ class CreateTenant extends \Illuminate\Console\Command
                             { --entityId= : IdP Issuer URL }
                             { --loginUrl= : IdP Sign on URL }
                             { --logoutUrl= : IdP Logout URL }
+                            { --relayStateUrl= : Redirection URL after successful login }
+                            { --nameIdFormat= : Name ID Format ("persistent" by default) }
                             { --x509cert= : x509 certificate (base64) }
                             { --metadata= : A custom metadata }';
 
@@ -98,6 +100,8 @@ class CreateTenant extends \Illuminate\Console\Command
             'idp_login_url' => $loginUrl,
             'idp_logout_url' => $logoutUrl,
             'idp_x509_cert' => $x509cert,
+            'relay_state_url' => $this->option('relayStateUrl'),
+            'name_id_format' => $this->resolveNameIdFormat(),
             'metadata' => $metadata,
         ]);
 
