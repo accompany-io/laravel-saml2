@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.7] - 2020-10-28
+
+### Added
+- Laravel 8 support
+
+## [2.0.6] - 2020-10-23
+
+### Fixed
+- Setting Name ID Format on SP bootstrap 
+
+## [2.0.5] - 2020-10-23
+
+### Added
+- The ability to customize Name ID Format for different Identity Providers
+
+## [2.0.4] - 2020-10-22
+
+### Added
+- Custom Relay State URL per Tenant (to specify a redirection URL after sign in)
+
+## [2.0.3] - 2020-07-01
+
+### Added
+- Support for Laravel 7 (#4)
+- Add branch-aliases in composer.json
+
+## [2.0.2] - 2020-03-24
+
+### Fixed
+- Only log debug messages when debug is enabled in config file (#3)
+
 ## [2.0.1] - 2019-10-17
 
 ### Added
@@ -74,7 +105,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Replaced underscores with dots in routes
 - Minor refactoring, formatting
 
-[Unreleased]: https://github.com/24Slides/laravel-saml2/compare/2.0.1...HEAD
+[Unreleased]: https://github.com/24Slides/laravel-saml2/compare/2.0.8...HEAD
+[2.0.7]: https://github.com/24Slides/laravel-saml2/compare/2.0.6...2.0.7
+[2.0.6]: https://github.com/24Slides/laravel-saml2/compare/2.0.5...2.0.6
+[2.0.5]: https://github.com/24Slides/laravel-saml2/compare/2.0.4...2.0.5
+[2.0.4]: https://github.com/24Slides/laravel-saml2/compare/2.0.3...2.0.4
+[2.0.3]: https://github.com/24Slides/laravel-saml2/compare/2.0.2...2.0.3
+[2.0.2]: https://github.com/24Slides/laravel-saml2/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/24Slides/laravel-saml2/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/24Slides/laravel-saml2/compare/1.2.0...2.0.0
 [1.2.0]: https://github.com/24Slides/laravel-saml2/compare/1.1.3...1.2.0
