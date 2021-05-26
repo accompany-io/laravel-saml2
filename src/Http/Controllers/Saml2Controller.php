@@ -48,6 +48,10 @@ class Saml2Controller extends Controller
         $errors = $auth->acs();
 
         if (!empty($errors)) {
+            if (config('saml2.debug')) {
+                logger()->debug('[Saml2] Error with IdP SAML Response. [Debug] Assertion: ' . $auth->getBase()->getLastResponseXML());
+            }
+
             logger()->error('saml2.error_detail', ['error' => $auth->getLastErrorReason()]);
             session()->flash('saml2.error_detail', [$auth->getLastErrorReason()]);
 
@@ -70,7 +74,8 @@ class Saml2Controller extends Controller
         return redirect($auth->getTenant()->relay_state_url ?: config('saml2.loginRoute'));
     }
 
-    private function wouldCauseInfiniteLoop(Auth $auth, $redirectUrl) {
+    private function wouldCauseInfiniteLoop(Auth $auth, $redirectUrl)
+    {
         $loginUrl = route('saml.login', ['uuid' => $auth->getTenant()->uuid]);
         return $redirectUrl === $loginUrl;
     }
